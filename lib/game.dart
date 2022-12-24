@@ -12,7 +12,7 @@ Choice? getCpuChoice() {
   Random random = Random();
   int choiceIndex = random.nextInt(3);
   cpuChoice = Choice.values[choiceIndex];
-  print(cpuChoice.name);
+  // print(cpuChoice.name);
   return cpuChoice;
 }
 
