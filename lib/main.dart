@@ -30,6 +30,12 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   bool userTapped = false;
+  // Timer(Duration(seconds: 6), () {
+  // setState(() {
+  // userTapped = false;
+  // });
+  // });
+  Timer? timer;
 
   @override
   Widget build(BuildContext context) {
@@ -66,13 +72,18 @@ class _MainScreenState extends State<MainScreen> {
                       onTap: () {
                         setState(() {
                           userTapped = true;
+
                           playerChoice = Choice.rock;
                           getCpuChoice();
                           getResult();
-                        });
-                        Future.delayed(const Duration(seconds: 6), () {
-                          setState(() {
-                            userTapped = false;
+
+                          timer = Timer(const Duration(seconds: 6), () {
+                            setState(() {
+                              userTapped = false;
+                              if (userTapped) {
+                                timer!.cancel();
+                              }
+                            });
                           });
                         });
                       },
@@ -87,9 +98,12 @@ class _MainScreenState extends State<MainScreen> {
                           getCpuChoice();
                           getResult();
                         });
-                        Future.delayed(const Duration(seconds: 6), () {
+                        timer = Timer(const Duration(seconds: 6), () {
                           setState(() {
                             userTapped = false;
+                            if (userTapped) {
+                              timer!.cancel();
+                            }
                           });
                         });
                       },
@@ -104,9 +118,12 @@ class _MainScreenState extends State<MainScreen> {
                           getCpuChoice();
                           getResult();
                         });
-                        Future.delayed(const Duration(seconds: 6), () {
+                        timer = Timer(const Duration(seconds: 6), () {
                           setState(() {
                             userTapped = false;
+                            if (userTapped) {
+                              timer!.cancel();
+                            }
                           });
                         });
                       },
